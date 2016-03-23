@@ -1,0 +1,220 @@
+//
+package com.example.diagnosticcalculator;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.RatingBar;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+public class MainActivity extends ActionBarActivity {
+	final Context context = this;
+	private Spinner s_disease;
+	private Spinner s_test;
+	public static String disease;
+	private double sensitivity;
+	private double specificity;
+	private Button dummy;
+	public static String preTestHint;
+	public static RatingBar rating;
+    public final static String EXTRA_MESSAGE = "com.example.diagnosticcalculator.MESSAGE";
+    private Button hintButton;
+    public static String test_name;
+	private HashMap<String, ArrayList<Test>> disease_map;
+	public static int rate;
+	Calculator calc = new Calculator();
+	Database db = new Database();
+	
+	Toast rateToast;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		GetDatabase<?> getData = new GetDatabase<Object>();
+		getData.execute(this);
+		
+		dummy = (Button) findViewById(R.id.button1);
+		hintButton = (Button) findViewById(R.id.button2);
+		rating = (RatingBar) findViewById(R.id.ratingBar1);
+		rating.setIsIndicator(true);
+		s_disease = (Spinner) findViewById(R.id.spinner1);
+		s_test = (Spinner) findViewById(R.id.spinner2);
+		// Add spinner data
+		
+		disease_map = db.getDiagData();
+		List<String> disease_list = new ArrayList<String>();
+		for (Map.Entry<String, ArrayList<Test>> entry : disease_map.entrySet()) {
+			disease_list.add(entry.getKey());
+		}
+
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, disease_list);
+		dataAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		s_disease.setAdapter(dataAdapter);
+		
+		addDiseaseListener();
+		addTestListener();
+		
+		hintButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+				alertDialog.setTitle("Hint:");
+				alertDialog.setMessage(preTestHint);
+				
+				alertDialog.create().show();	
+				
+			}
+		});
+		
+		 
+		
+		dummy.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+			    Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+			    double[] values = new double[2];
+			    values[0] = sensitivity;
+			    values[1] = specificity;
+			    intent.putExtra(EXTRA_MESSAGE, values );
+			    startActivity(intent);
+			}
+		});
+		
+		rating.setOnTouchListener(new OnTouchListener() {
+			
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+            
+          rateToast = Toast.makeText(getApplicationContext(), db.getRatingRange(rating.getRating()), Toast.LENGTH_SHORT);
+            	rateToast.show();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                   @Override
+                   public void run() {
+                	   rateToast.cancel(); 
+                   }
+            }, 300);
+                rating.setFocusable(true);
+                return true;
+            }
+        });
+	}
+
+	
+	public void addTestListener(){
+		s_test.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int pos, long id) {
+					test_name = (String) parent.getItemAtPosition(pos);
+				if (disease_map.containsKey(disease)) {
+					ArrayList<Test> testList = disease_map.get(disease);
+					for (Test testdata : testList) {
+						if (testdata.toString().equals(test_name)) {
+							sensitivity = testdata.getSensitivity();
+							specificity = testdata.getSpecificity();
+							rate = testdata.getRating();
+							rating.setRating(testdata.getRating());
+							
+							// Set the LR+ and LR-							
+						}
+					}
+				}
+
+			}
+
+			public void onNothingSelected(AdapterView<?> parent) {
+			}
+		});
+
+	}
+	public void addDiseaseListener(){
+		
+		s_disease.setOnItemSelectedListener(new OnItemSelectedListener() {
+		
+		@Override
+		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
+				long arg3) {
+			
+			disease = String.valueOf(s_disease.getSelectedItem());
+			ArrayList<Test> test = new ArrayList<Test>();
+			ArrayList<String> testName = new ArrayList<String>();
+			Database db = new Database();
+			preTestHint = db.getPreTest(disease);
+			HashMap<String, ArrayList<Test>> disease_map = db.getDiagData();
+			if (disease_map.containsKey(disease)) {
+				test = disease_map.get(disease);
+			} else
+				return;
+			// extracting the test name from the Test object
+			for (Test testObj : test) {
+				testName.add(testObj.toString());
+			}
+			// populating the test spinner with the test names of a particular
+			// disease
+			ArrayAdapter<String> testAdapter = new ArrayAdapter<String>(MainActivity.this,
+					android.R.layout.simple_spinner_item, testName);
+			testAdapter
+					.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			testAdapter.notifyDataSetChanged();
+			s_test.setAdapter(testAdapter);
+	
+		}
+	
+		@Override
+		public void onNothingSelected(AdapterView<?> arg0) {
+			// TODO Auto-generated method stub	
+		}
+	});
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+
+		switch(id){
+		case R.id.action_settings:
+			return true;
+		
+		}
+
+		return super.onOptionsItemSelected(item);
+	}
+	
+
+
+}

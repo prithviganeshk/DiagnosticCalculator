@@ -1,0 +1,157 @@
+commit 91fb72f76177e9618170ddfb800daabd2d12f4b1
+Author: Vaibhav <bhatvaibhav@gmail.com>
+Date:   Fri Dec 5 02:17:35 2014 -0500
+
+    Cleaned repo; Added multiple toast handling
+
+commit ca089c6a2a1c225b028a691d5cc53866ed5e4cf0
+Merge: eba533f 9c97899
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Dec 4 08:09:15 2014 -0500
+
+    Merge branch 'master' of https://bitbucket.org/573chop/diagnosticcalculator
+
+commit eba533f78043f176d1c59a3ba4f73707c674de71
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Dec 4 08:08:50 2014 -0500
+
+    too many git revisions, hopefully this merges fine
+
+commit c095b3e035dd8e034d65b3d950b152ad979e9cd2
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Dec 4 08:06:24 2014 -0500
+
+    added database
+
+commit 9c97899b9380689d269d32558f0279ada09c0d62
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Dec 4 07:54:59 2014 -0500
+
+    recommitting database
+
+commit deba371df664e033b22a526ec1d082ae7c71f7dc
+Merge: d04dd4b 6b4ba0a
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Dec 4 07:49:55 2014 -0500
+
+    Merge branch 'master' of https://bitbucket.org/573chop/diagnosticcalculator
+
+commit d04dd4bc6612ec5648059b82d1f71850223061d6
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Dec 4 07:48:30 2014 -0500
+
+    database cleaned
+
+commit 6b4ba0aa3648493f999d25dd56c4b162251c2a34
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Fri Nov 28 02:16:22 2014 -0500
+
+    internet permissions
+
+commit 3b9339960aef478072ef5bf5cb6f8add1b82f11e
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Fri Nov 28 01:25:32 2014 -0500
+
+    working database
+
+commit cc4e83653b684cc9cb2ceeaec26ee120a7d9aead
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Nov 27 23:39:19 2014 -0500
+
+    updated the database file: updates drop down menu
+
+commit ad71221faf5df78000ff13464e5155edb02b8165
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Nov 27 23:29:24 2014 -0500
+
+    messed up again
+
+commit bd1072c451932fd4e893ec3798bbed43ce5b0889
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Nov 27 14:21:49 2014 -0500
+
+    sorry, stripped all files
+
+commit 031ba2c94e621b911c6986d350af2bf2e98029be
+Author: Vaibhav <bhatvaibhav@gmail.com>
+Date:   Thu Nov 27 03:02:49 2014 -0500
+
+    Removed old test folders; Added Final test project
+
+commit 27d7a405f79850ee826c70f934ddc64ec2c1e1b1
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Fri Nov 21 12:00:47 2014 -0500
+
+    GUI modification
+
+commit 59364480533349ab5cc0a8afcf324e8611ea5561
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Fri Nov 21 04:52:04 2014 -0500
+
+    changes images
+
+commit e91ec5617767c8553157fb533f49c5ebc8a8b715
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Fri Nov 21 04:51:13 2014 -0500
+
+    minor UI changes in result activity
+
+commit 076cf3f1f57dc9a094bf08dababfdf291d7981f7
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Fri Nov 21 04:49:54 2014 -0500
+
+    minor UI changes
+
+commit 93fa7ff358429d88b6149df5a8b80a1554a01a89
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Nov 13 21:42:43 2014 -0500
+
+    images
+
+commit a830fff59fcd8e1f1bea70043b3914a1038d0f1f
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Nov 13 21:41:27 2014 -0500
+
+    updating xml main
+
+commit 5a9b50390087f66aa8a43c945dd9f418e04fc402
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Nov 13 21:12:12 2014 -0500
+
+    xml files
+
+commit e81e571c93283fa1556ce34b6bb02d772d78a2c4
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Nov 13 21:08:39 2014 -0500
+
+    chop image
+
+commit 18d5d5cebd852d8627044da31abb083aec6e2d57
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Nov 13 19:16:09 2014 -0500
+
+    changes in UI 1
+
+commit fc9b3e196ca37082dde80d21cab86203aaf0ddea
+Author: prithviganeshk <prithviganeshk@gmai.com>
+Date:   Thu Nov 13 18:57:46 2014 -0500
+
+    changes in UI
+
+commit 415ed7313af1cb1cff9d291ec1d3dc82d6bec9b8
+Author: Vaibhav <bhatvaibhav@gmail.com>
+Date:   Mon Oct 6 20:11:01 2014 -0400
+
+    Corrected floating point
+
+commit 32fe052ba47625eefc20a7288908d63346c73c77
+Author: Vaibhav <bhatvaibhav@gmail.com>
+Date:   Mon Oct 6 20:06:37 2014 -0400
+
+    Added calculator class.java
+
+commit 5e5badda4ea3002671a97378b1f3d8806c49a09e
+Author: Vaibhav <bhatvaibhav@gmail.com>
+Date:   Mon Oct 6 19:24:34 2014 -0400
+
+    Basic UI with logo - No calculator class

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DiagnosticCalculator</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="disease_prompt">Select a Disease</string>
+    <string name="test_prompt">Select a Test</string>
+    <string name="PPV">Positive:0</string>
+    <string name="NPV">Negative:0</string>
+    <string name="pretest">(Slide the bar to change pre-test probability of the test)</string>
+    <string name="dname">Disease Name</string>
+    <string name="diagTest">Diagnostic Test</string>
+    <string name="calculate">Calculate</string>
+	<string name = "positive">Positive:</string>
+	<string name = "negative">Negative:</string>
+	<string name = "hint">Hint</string>
+	<string name = "expense">Test Expense</string>
+    <string-array name="disease_names">
+        <item>Fever</item>
+        <item>Cholera</item>
+        <item>Diarrhea</item>
+        <item>Typhoid</item>
+        <item>Malaria</item>
+        <item>Tuberculosis</item>
+    </string-array>
+
+    <string name="Sync">Sync</string>
+    <string name="title_activity_result">ResultActivity</string>
+
+</resources>
